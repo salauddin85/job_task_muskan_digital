@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-e@kopus1*=v98l9$9d_3ivbovmiay+=ol%n#hqe7bqin@#($1v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 CORS_ALLOW_ALL_ORIGINS=True
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
+# CSRF_TRUSTED_ORIGINS = ['https://cildank-shop.onrender.com']
 AUTH_USER_MODEL = 'auth_app.CustomUser'
 # Application definition
 
@@ -142,3 +142,19 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+import os
+
+# Set the CLOUDINARY_URL using the provided value
+# CLOUDINARY_URL = os.env('CLOUDINARY_URL', 'cloudinary://464615231665312:CGMQbVMG6UJOS7zSsY9AlOlX6S0@dnzqmx8nw?secure_distribution=mydomain.com&upload_prefix=myprefix.com')
+
+import cloudinary.uploader
+import cloudinary.api
+CLOUDINARY_URL='cloudinary://464615231665312:CGMQbVMG6UJOS7zSsY9AlOlX6S0@dnzqmx8nw'
+cloudinary.config(
+    cloud_name="dnzqmx8nw",
+    api_key="464615231665312",
+    api_secret="CGMQbVMG6UJOS7zSsY9AlOlX6S0"
+)

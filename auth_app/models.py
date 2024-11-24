@@ -1,6 +1,10 @@
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+from cloudinary.models import CloudinaryField
+
+
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, user_id, password=None, **extra_fields):
         if not user_id:
@@ -48,7 +52,9 @@ class Module(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='module')
     # user = models.ManyToManyField(CustomUser, related_name='module')
     name = models.CharField(max_length=100)
-    image=models.ImageField(upload_to='images')
+    # image=models.ImageField(upload_to='images')
+    image = CloudinaryField('image', null=True, blank=True)  # CloudinaryField ব্যবহার করা হচ্ছে
+
     price = models.FloatField(max_length=10)
     description = models.CharField(max_length=1000)
 

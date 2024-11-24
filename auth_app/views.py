@@ -65,38 +65,38 @@ class AdminViewset(viewsets.ModelViewSet):
             return CustomUser.objects.filter(is_admin=True)
 
 
-class ModuleViewSet(viewsets.ModelViewSet):
-    queryset = Module.objects.all()
-    serializer_class = ModuleSerializer
-    permission_classes=[IsAuthenticated,IsAdminOrOwnModule]
-
-    def get_queryset(self):
-        if  self.request.user.is_admin:
-            return Module.objects.all()
-        return Module.objects.filter(user=self.request.user)
-    
-
-
 # class ModuleViewSet(viewsets.ModelViewSet):
 #     queryset = Module.objects.all()
 #     serializer_class = ModuleSerializer
 #     permission_classes=[IsAuthenticated,IsAdminOrOwnModule]
 
-#     def perform_create(self, serializer):
-#         name=serializer.validated_data.get('name')
-#         user_id=serializer.validated_data.get('user')
-#         price=serializer.validated_data.get('price')
-#         image_url=serializer.validated_data.get('image')
-#         description=serializer.validated_data.get('description')
-
-        
-#         if not image_url:
-#             return Response({"error": "image_url not found"}, status=status.HTTP_400_BAD_REQUEST)
-
-#         serializer.save(user=user_id, name=name,image=image_url,price=price,description=description)
-
 #     def get_queryset(self):
 #         if  self.request.user.is_admin:
 #             return Module.objects.all()
 #         return Module.objects.filter(user=self.request.user)
+    
+
+
+class ModuleViewSet(viewsets.ModelViewSet):
+    queryset = Module.objects.all()
+    serializer_class = ModuleSerializer
+    permission_classes=[IsAuthenticated,IsAdminOrOwnModule]
+
+    def perform_create(self, serializer):
+        name=serializer.validated_data.get('name')
+        user_id=serializer.validated_data.get('user')
+        price=serializer.validated_data.get('price')
+        image_url=serializer.validated_data.get('image')
+        description=serializer.validated_data.get('description')
+
+        
+        if not image_url:
+            return Response({"error": "image_url not found"}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer.save(user=user_id, name=name,image=image_url,price=price,description=description)
+
+    def get_queryset(self):
+        if  self.request.user.is_admin:
+            return Module.objects.all()
+        return Module.objects.filter(user=self.request.user)
     
