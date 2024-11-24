@@ -48,9 +48,12 @@ class Module(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='module')
     # user = models.ManyToManyField(CustomUser, related_name='module')
     name = models.CharField(max_length=100)
+    image=models.ImageField(upload_to='images')
     price = models.FloatField(max_length=10)
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000)
 
+    def __str__(self) -> str:
+        return f'Name{self.name} User_ID: {self.user.user_id}'
 
 
 
