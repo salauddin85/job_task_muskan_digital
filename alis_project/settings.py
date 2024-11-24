@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-e@kopus1*=v98l9$9d_3ivbovmiay+=ol%n#hqe7bqin@#($1v
 DEBUG = True
 CORS_ALLOW_ALL_ORIGINS=True
 ALLOWED_HOSTS = ['*']
-# CSRF_TRUSTED_ORIGINS = ['https://cildank-shop.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://job-task-muskan-digital.onrender.com']
 AUTH_USER_MODEL = 'auth_app.CustomUser'
 # Application definition
 
