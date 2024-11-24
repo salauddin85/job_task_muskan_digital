@@ -26,7 +26,14 @@ SECRET_KEY = 'django-insecure-e@kopus1*=v98l9$9d_3ivbovmiay+=ol%n#hqe7bqin@#($1v
 DEBUG = True
 CORS_ALLOW_ALL_ORIGINS=True
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://job-task-muskan-digital.onrender.com']
+CSRF_TRUSTED_ORIGINS = [
+    
+    'https://job-task-muskan-digital.onrender.com'
+    'http://127.0.0.1:8000',
+    'https://127.0.0.1:8000',
+    'http://127.0.0.1:5500',
+    'https://127.0.0.1:5500',
+    ]
 AUTH_USER_MODEL = 'auth_app.CustomUser'
 # Application definition
 
